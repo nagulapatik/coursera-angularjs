@@ -1,2 +1,2 @@
 # coursera-angularjs
-Repo for angular js
+Repo for angular js test
