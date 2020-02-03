@@ -1,12 +1,18 @@
-<html ng-app="myFirstApp">
+<html ng-app="myApp">
     <head>
         <script src="angular.min.js"></script>
         <script src="app.js"></script>
         <title>My first AngularJs Application</title>    
     </head>
 <body>
+    <h1>My First AngularJs App</h1>
     <div ng-controller="MyFirstController">
-        
+        <div>
+            Your Name: <input type="text" ng-model="name" ng-keyup="display();">
+        </div>
+        <div>
+            Total numeric value is: {{value}}
+        </div>
     </div>
 </body>
 
