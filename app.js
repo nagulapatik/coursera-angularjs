@@ -1,6 +1,6 @@
 (function (){
 
-    angular.module(newFunction(), [])
+    angular.module('myFirstApp', [])
     .controller('MyFirstController', function(){
 
 
