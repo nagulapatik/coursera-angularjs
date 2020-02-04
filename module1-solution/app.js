@@ -24,6 +24,7 @@
                 var values = value.replace(/\s/g, "").split(',');
                 var finalvalues = removeFalsyElementsFromArray(values);
 
+                
                 if(finalvalues.length <= 3 && finalvalues.length > 0){
                     return "Enjoy!";
                 } else if(finalvalues.length > 3){
