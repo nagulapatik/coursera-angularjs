@@ -40,7 +40,6 @@
             var newArray = [];
             for(var index = 0; index < someArray.length; index++) {
                 if(someArray[index]) {
-                    alert(someArray[index]);
                     newArray.push(someArray[index]);
                 }
             }
