@@ -24,13 +24,16 @@
                 var values = value.replace(/\s/g, "").split(',');
                 var finalvalues = removeFalsyElementsFromArray(values);
 
-                
+
                 if(finalvalues.length <= 3 && finalvalues.length > 0){
                     return "Enjoy!";
+                    $scope.colorClass = "Green";
                 } else if(finalvalues.length > 3){
                     return "Too much!";
+                    $scope.colorClass = "Green";
                 } else{
                     return "Please enter data first";
+                    $scope.colorClass = "Red";
                 }
             } else{
                 return "Please enter data first";
