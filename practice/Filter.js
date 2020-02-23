@@ -2,53 +2,52 @@
 
     'use strict';
 
-    angular.module('myApp',[])
-    .controller('LunchCheckController', LunchCheckController);
+    angular.module('myFilter',[])
+    .controller('FilterController', FilterController)
+    //step 2: Specify the filter factory function
+    .filter('custom', CustomFilterFactory)
+    .filter('truth', TruthFilter);
 
     //inject dependencies using $inject
-    LunchCheckController.$inject = ['$scope', '$filter'];
+    FilterController.$inject = ['$scope', '$filter', 'customFilter'];
 
-    function LunchCheckController($scope, $filter){
+
+    //step 3: Inject it with name of the filter + Filter
+    function FilterController($scope, $filter, customFilter){
         
-        //ng-click on button
-        $scope.checkDishes = function(){
+        $scope.name = "Test";
+        $scope.cookieCost = .45;
 
-            //get the value from text-box
-            var message = calculateNumberOfDishes($scope.dishes);
-            $scope.message = message;
+        $scope.sayMessage = function(){
+            var message = "kartheek likes AngularJs!";
+            var output = $filter('uppercase')(message);
+            return output;
         }
 
-        function calculateNumberOfDishes(value){
-            if(value != undefined){
-                
-                var values = value.replace(/\s/g, "").split(',');
-                var finalvalues = removeFalsyElementsFromArray(values);
-
-
-                if(finalvalues.length <= 3 && finalvalues.length > 0){
-                    return "Enjoy!";
-                    $scope.colorClass = "Green";
-                } else if(finalvalues.length > 3){
-                    return "Too much!";
-                    $scope.colorClass = "Green";
-                } else{
-                    return "Please enter data first";
-                    $scope.colorClass = "Red";
-                }
-            } else{
-                return "Please enter data first";
-            }
+        $scope.sayLovesMessage = function(){
+            var message = "kartheek likes AngularJs!";
+            message = customFilter(message, "some val");
+            return message;
         }
+    }
 
-        function removeFalsyElementsFromArray(someArray) {
-            var newArray = [];
-            for(var index = 0; index < someArray.length; index++) {
-                if(someArray[index]) {
-                    newArray.push(someArray[index]);
-                }
-            }
-            return newArray;
-        }
+    //step 1
+    //define the filter factory function
+    function CustomFilterFactory(){
+        return function (input){
+            input = input || "";
+            input = input.replace("likes", "loves");
+            return input;
+        };
+    }
+
+    function TruthFilter(){
+        return function (input, target, replace){
+            alert(input);
+            input = input || "";
+            input = input.replace(target, replace);
+            return input;
+        };
     }
 
 })();

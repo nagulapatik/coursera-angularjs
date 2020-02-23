@@ -7,7 +7,23 @@
 <body>
     <h1>Filters</h1>
     <div ng-controller="FilterController">
-        {{1 + 1}}
+        Cost : {{cookieCost | currency : "Rs." : 3}}
+        <div>
+            Old Message: {{sayMessage()}}
+        </div>
+        <div>
+            New Message: {{sayLovesMessage()}}
+        </div>
+        <div>
+            {{"likes" | custom | uppercase}}
+        </div>
+        <div>
+            New Message: {{"Kartheek likes cookies" | truth : 'cookies' : 'biscuts'  }}
+        </div>
+        <div>
+            Big Truth: {{"Kartheek likes cookies" | truth : 'cookies' : 'biscuts' | uppercase }}
+        </div>
+        
     </div>
 </body>
 
